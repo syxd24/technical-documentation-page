@@ -3,19 +3,16 @@ HTML & CSS Technical Documentation Project
 This project is a responsive technical documentation website built using pure HTML5 and CSS3.
 It demonstrates clean semantic structure, documentation layout, and best frontend practices.
 
-🚀 Features
+Features
 
 Semantic HTML structure using <main>, <section>, <article>, <nav>
-
 Responsive layout (desktop & mobile friendly)
-
 Fixed sidebar navigation
-
 Clean typography and spacing
-
 Beginner-friendly structure for learning frontend fundamentals
 
- Technologies Used
+Technologies Used
+
 Technology	Purpose
 HTML5	Page structure & content
 CSS3	Layout, colors, spacing & responsiveness
@@ -38,6 +35,6 @@ Understand semantic HTML layout
 Practice modern CSS layout techniques
 Learn GitHub workflow for real projects
 
-📌 Author
+Author
 
 Syed Suhel Ahmed Nisar Ahmed
