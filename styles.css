@@ -1,0 +1,372 @@
+:root{
+  --layout-bg: #333;
+  --main-bg: #fff;
+  --sidebar-width: 300px;
+  --text-color: #222;
+}
+
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:#f1f1f1;
+  overflow: hidden; /* lock body scroll */
+}
+
+/* -------- LEFT SIDEBAR -------- */
+
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--main-bg);
+  border-right: 2px solid var(--layout-bg);
+  box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+#navbar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 5px;
+}
+
+#navbar h1 {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--layout-bg);
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, white,rgb(244, 239, 239));
+  color: var(--layout-bg);
+  letter-spacing: -0.5px;
+}
+
+#navbar ul {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+}
+
+#navbar ul li {
+  border-bottom: 1px solid var(--layout-bg);
+}
+
+#navbar ul li a {
+  display: block;
+  padding: 1.2rem;
+  text-decoration: none;
+  color: var(--layout-bg);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+#navbar ul li a:hover {
+  background:#eee;
+  color:rgb(24, 24, 212);
+}
+
+/* -------- RIGHT CONTENT -------- */
+
+#main-doc {
+  margin-left: var(--sidebar-width);
+  height: 100vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  color: var(--text-color);
+  line-height: 1.7;
+  scroll-behavior: smooth;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+
+}
+
+.main-section {
+  margin-bottom: 2rem;
+}
+
+#main-doc .main-section > header {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 2px solid #ddd;
+  position: relative;
+  padding-left: 10px;
+}
+
+#main-doc .main-section > header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, #99a1b4, #506092);
+    border-radius: 2px;
+}
+
+.main-article {
+  margin-left: 10px;
+  max-width: 900px;
+  font-size: 1rem;
+}
+
+.main-article p {
+  margin-bottom: .9rem;
+}
+
+#main-doc ul {
+  margin: 1rem 0 1.5rem 2rem;
+}
+
+#main-doc li {
+  margin-bottom: .4rem;
+}
+
+#main-doc code {
+  display: block;
+  background: #f4f4f4;
+  padding: .7rem 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid rgb(56, 56, 170);
+  font-family: Consolas, monospace;
+  font-size: .95rem;
+  overflow-x: auto;
+}
+
+/* Smooth scrollbar */
+#main-doc::-webkit-scrollbar {
+  width: 10px;
+}
+
+#main-doc::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#main-doc::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+#main-doc::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Active navigation link */
+#navbar ul li a.active {
+  background: #e0e7ff;
+  color: #2563eb;
+  border-left: 3px solid #2563eb;
+  font-weight: 700;
+}
+
+/* Section fade-in animation */
+.main-section {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Large Desktop - 1920px and above */
+@media screen and (min-width: 1920px) {
+  :root {
+    --sidebar-width: 350px;
+  }
+  
+  #main-doc {
+    padding: 3rem 6rem;
+    font-size: 1.1rem;
+  }
+  
+  .main-article {
+    max-width: 1200px;
+  }
+  
+  #navbar h1 {
+    font-size: 2rem;
+  }
+  
+  #navbar ul li a {
+    font-size: 1.5rem;
+  }
+}
+
+/* Standard Desktop - 1024px to 1919px (Default - no changes needed) */
+
+/* Tablet Landscape - 768px to 1023px */
+@media screen and (max-width: 1023px) {
+  :root {
+    --sidebar-width: 250px;
+  }
+  
+  #main-header {
+    width: 250px;
+  }
+  
+  #main-doc {
+    margin-left: 250px;
+    padding: 2rem 2.5rem;
+  }
+  
+  #navbar h1 {
+    font-size: 1.5rem;
+  }
+  
+  #navbar ul li a {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
+
+/* Tablet Portrait & Mobile Landscape - 600px to 767px */
+@media screen and (max-width: 767px) {
+  :root {
+    --sidebar-width: 0;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  #main-header {
+    width: 280px;
+    transform: translateX(-280px);
+    transition: transform 0.3s ease;
+  }
+  
+  #main-header.active {
+    transform: translateX(0);
+  }
+  
+  #main-doc {
+    margin-left: 0;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    padding-top: 4rem;
+  }
+  
+  /* Hamburger Menu Button */
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 200;
+    background: var(--layout-bg);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+  
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+  
+  /* Overlay when menu is open */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+}
+
+/* Mobile - 375px to 599px (iPhone, Android) */
+@media screen and (max-width: 599px) {
+  #main-doc {
+    padding: 1rem;
+    padding-top: 4rem;
+  }
+  
+  #main-doc .main-section > header {
+    font-size: 1.5rem;
+  }
+  
+  .main-article {
+    font-size: 0.95rem;
+    margin-left: 0;
+  }
+  
+  #navbar h1 {
+    font-size: 1.4rem;
+    padding: 1.2rem 1rem;
+  }
+  
+  #navbar ul li a {
+    font-size: 1.1rem;
+    padding: 0.9rem 1rem;
+  }
+  
+  #main-doc code {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+    overflow-x: auto;
+  }
+}
+
+/* Small Mobile - 320px to 374px (iPhone SE, small phones) */
+@media screen and (max-width: 374px) {
+  #main-header {
+    width: 260px;
+    transform: translateX(-260px);
+  }
+  
+  #main-doc {
+    padding: 0.75rem;
+    padding-top: 3.5rem;
+  }
+  
+  #main-doc .main-section > header {
+    font-size: 1.3rem;
+  }
+  
+  .main-article {
+    font-size: 0.9rem;
+  }
+  
+  #navbar h1 {
+    font-size: 1.2rem;
+  }
+  
+  #navbar ul li a {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
